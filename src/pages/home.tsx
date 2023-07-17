@@ -1,10 +1,15 @@
-import { Button } from '@/components/ui'
+import HomeTemplate from '../config/HomeTemplate'
+import CardTable from '@/components/CardTable/CardTable'
+import Dashboard from '@/components/Dashboard/Dashboard'
 
-export default function Contact() {
+
+const Home = () => {
   return (
-    <>
-      <h1>Olá, página HOME</h1>
-      <Button>BOTAO DE EXEMPLO COM COUNT </Button>
-    </>
+      <HomeTemplate>
+        <Dashboard />
+        <CardTable />
+      </HomeTemplate>
   )
 }
+
+export default Home;

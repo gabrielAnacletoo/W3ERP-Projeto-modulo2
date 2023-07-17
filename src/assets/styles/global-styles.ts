@@ -14,13 +14,23 @@ export default createGlobalStyle`
     box-sizing: border-box;
   }
 
+    body {
+    font-size: 16px;
+    color: var(--dark);
+    }
   html {
     font-size: 16px;
   }
 
   body, input, select, textarea {
-    font-size: 1rem;
+      font-size: 1rem;
     color: var(--dark);
+  }
+  .PoopinsFont { 
+    font-family: 'Poppins', sans-serif;
+  }
+  .SoraFonts {
+    font-family: 'Sora', sans-serif;
   }
 
 `
