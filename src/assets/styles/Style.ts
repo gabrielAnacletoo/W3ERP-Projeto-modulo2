@@ -779,7 +779,7 @@ align-items:center;
 @media screen and (max-width: 768px) { 
 position:absolute;
 flex-direction:column;
-margin-top:18%;
+margin-top:25%;
 top:62%;
 width:340px;
 
@@ -1120,7 +1120,7 @@ margin:5px 0;
 }
 span {
   background-color:#C5CFFF;
-  padding:7px 10px 4px 10px;
+  padding:4px 8px 2px 8px;
   border-radius:50%;
 }
 }
