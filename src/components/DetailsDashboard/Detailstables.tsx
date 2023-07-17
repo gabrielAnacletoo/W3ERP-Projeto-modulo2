@@ -1,5 +1,5 @@
 import { DetailsHigh, DetailsLow } from '@/config/Details/DetailsTable'
-import {TableChildren,ContainerTables,CardTables,MenuDetails,Table,HeaderDetails} from '@/assets/styles/Style'
+import {TableChildren,CardTableBelow,ContainerTables,CardTables,MenuDetails,Table,HeaderDetails} from '@/assets/styles/Style'
 import { useState, useEffect } from 'react'
 import ArrowDown from '@/assets/images/trending-down.png'
 import ArrowUp from '@/assets/images/trending-up.png'
@@ -92,7 +92,7 @@ const Detailstables = () => {
           </TableChildren>
         </CardTables>
 
-        <CardTables>
+        <CardTableBelow>
           <MenuDetails>
           <HeaderDetails>
               <span className='UP'><img src={ArrowUp} /></span>
@@ -128,7 +128,7 @@ const Detailstables = () => {
               </tbody>
             </table>
           </TableChildren>
-        </CardTables>
+        </CardTableBelow>
       </ContainerTables>
     </>
   )

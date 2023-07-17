@@ -694,10 +694,31 @@ border-radius:10px;
 height:auto;
 align-items:center;
 @media screen and (max-width: 768px) { 
+position:absolute;
+flex-direction:column;
+top:43%;
 width:340px;
 margin-bottom:20px;
 }
 `
+
+export const CardTableBelow = styled.div`
+box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+background-color:#fff;
+width:49%;
+border-radius:10px;
+height:auto;
+align-items:center;
+@media screen and (max-width: 768px) { 
+position:absolute;
+flex-direction:column;
+top:68%;
+width:340px;
+margin-bottom:20px;
+}
+`
+
+
 //Buttons table
   export const MenuTables = styled.div`
   margin: 1% 0 0 0;
@@ -1027,7 +1048,7 @@ margin:5px 0;
 }
 span {
   background-color:#C5CFFF;
-  padding:9px 12px 6px 12px;
+  padding:8px 11px 5px 11px;
   border-radius:50%;
 }
 }
