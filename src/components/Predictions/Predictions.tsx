@@ -114,9 +114,11 @@ const Predictions = () => {
               {prediction.content && prediction.content.map((clientsData: Empresa) => (
                     <S.CardClient key={clientsData.id}>
                       <S.Cardheader>
-                        <span>
-                          <img src={User} />
-                        </span>{' '}
+                          {!isMobile && 
+                          <span>
+                              <img src={User} />
+                              </span>
+                          }
                         {clientsData.nome.length > 15
                           ? clientsData.nome.substring(0, 15) + '...'
                           : clientsData.nome}
