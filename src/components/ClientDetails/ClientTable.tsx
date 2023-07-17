@@ -1,5 +1,5 @@
 import { ProductsHigh,ProductsLow } from '@/config/Details/DetailsTable'
-import {TableChildren, ContainerTables,CardTables,MenuDetails,Table,HeaderDetails} from '@/assets/styles/Style'
+import * as S from '@/assets/styles/Style'
 import { useState, useEffect } from 'react'
 import ArrowDown from '@/assets/images/trending-down.png'
 import ArrowUp from '@/assets/images/trending-up.png'
@@ -55,16 +55,16 @@ const ClientTable = () => {
 
   return (
     <>
-     <ContainerTables>
-        <CardTables>
-          <MenuDetails>
-            <HeaderDetails>
+     <S.ContainerTables>
+        <S.TableClientDown>
+          <S.MenuDetails>
+            <S.HeaderDetails>
               <span className='Down'><img src={ArrowDown} /></span>
               <span className="SoraFonts">Produtos em Baixa</span>
-            </HeaderDetails>
-          </MenuDetails>
+            </S.HeaderDetails>
+          </S.MenuDetails>
 
-          <TableChildren>
+          <S.TableChildren>
             <table className="PoopinsFont">
               <thead>
                 <tr>
@@ -91,18 +91,18 @@ const ClientTable = () => {
                 )}
               </tbody>
             </table>
-          </TableChildren>
-        </CardTables>
+          </S.TableChildren>
+        </S.TableClientDown>
 
-        <CardTables>
-          <MenuDetails>
-          <HeaderDetails>
+        <S.TableClientHigh>
+          <S.MenuDetails>
+          <S.HeaderDetails>
               <span className='UP'><img src={ArrowUp} /></span>
               <span className="SoraFonts">Produtos em alta</span>
-            </HeaderDetails>
-          </MenuDetails>
+            </S.HeaderDetails>
+          </S.MenuDetails>
 
-          <TableChildren>
+          <S.TableChildren>
             <table className="PoopinsFont">
               <thead>
                 <tr>
@@ -124,14 +124,14 @@ const ClientTable = () => {
                   ))
                 ) : (
                   <tr>
-                    <td colSpan={4}>Nenhum produto encontrado</td>
+                    <td colSpan={4}>Nenhum cliente encontrado</td>
                   </tr>
                 )}
               </tbody>
             </table>
-          </TableChildren>
-        </CardTables>
-      </ContainerTables>
+          </S.TableChildren>
+        </S.TableClientHigh>
+      </S.ContainerTables>
     </>
   )
 }

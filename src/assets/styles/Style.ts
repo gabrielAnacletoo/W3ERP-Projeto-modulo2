@@ -487,7 +487,7 @@ top:4%;
 border-radius:0;
 width:100vw;
 background-color:#001C98;
-height:25%;
+height:26%;
 }
 `
 export const Filter = styled.div`
@@ -769,6 +769,23 @@ width:340px;
 }
 `
 
+export const TableEClientsHome = styled.div`
+box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+background-color:#fff;
+width:49%;
+border-radius:10px;
+height:auto;
+align-items:center;
+@media screen and (max-width: 768px) { 
+position:absolute;
+flex-direction:column;
+margin-top:18%;
+top:62%;
+width:340px;
+
+}
+`
+
 
 //Buttons table
   export const MenuTables = styled.div`
@@ -985,6 +1002,10 @@ td {
   img {
     margin-top:15px;
     width:20px;
+  }
+  @media screen and (max-width: 768px) { 
+    margin:10px;
+
   }
 }
 

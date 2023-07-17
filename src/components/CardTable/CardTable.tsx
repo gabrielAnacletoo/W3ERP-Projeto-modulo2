@@ -130,7 +130,7 @@ const CardTable = () => {
           </S.Table>
         </S.CardTables>
 
-        <S.TableExhausting>
+        <S.TableEClientsHome>
           <S.MenuTables>
             <div className="ContainerProducts">
               <img src={Clients} className="Clients" />
@@ -189,7 +189,7 @@ const CardTable = () => {
               </tbody>
             </table>
           </S.Table>
-        </S.TableExhausting>
+        </S.TableEClientsHome>
       </S.ContainerTables>
     </>
   )
