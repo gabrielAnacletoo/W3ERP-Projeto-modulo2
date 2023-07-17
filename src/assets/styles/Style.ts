@@ -716,7 +716,7 @@ align-items:center;
 @media screen and (max-width: 768px) { 
 position:absolute;
 flex-direction:column;
-top:36%;
+top:37%;
 width:340px;
 }
 `
@@ -1120,7 +1120,7 @@ margin:5px 0;
 }
 span {
   background-color:#C5CFFF;
-  padding:4px 8px 2px 8px;
+  padding:4px 8px 3px 8px;
   border-radius:50%;
 }
 }
@@ -1232,8 +1232,9 @@ export const Info = styled.div`
     vertical-align: middle;
   }
   @media screen and (max-width: 768px) {
-top:50%;
+top:49%;
 left:0;
+font-size:10px;
   }
 `;
 
