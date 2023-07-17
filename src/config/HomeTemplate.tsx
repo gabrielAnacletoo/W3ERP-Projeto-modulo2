@@ -24,7 +24,7 @@ const HomeTemplate = ({ children }: Props) => {
 
   return (
     <>
-      {token && StorageToken ? (
+      {token || StorageToken ? (
         <ContainerHome>
           <NavSide />
           <ContentGroup>
@@ -36,7 +36,7 @@ const HomeTemplate = ({ children }: Props) => {
         <TokenNotFound/>
       )}
     </>
-  );
-};
+  )
+}
 
 export default HomeTemplate;
