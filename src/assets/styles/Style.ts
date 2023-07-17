@@ -413,7 +413,7 @@ export const Backmodal = styled.div`
   @media screen and (max-width: 768px) { 
   position:fixed;
   left:0;
-  width: 360px;
+  width: 100vw;
   height: 100vh;
   }
 `;
@@ -482,6 +482,8 @@ background-color:#001C98;
 margin-right:1%;
 height:36%;
 @media screen and (max-width: 768px) { 
+position:absolute;
+top:4%;
 border-radius:0;
 width:100vw;
 background-color:#001C98;
@@ -675,7 +677,7 @@ width: 98%;
 max-height:45%;
 background-color:#fff;
 @media screen and (max-width: 768px) { 
-margin:5% 0 0 10%;
+  margin:5% 0 0 10%;
 display:flex;
 flex-direction:column;
 justify-content:space-between;
@@ -683,6 +685,8 @@ align-items:center;
 width: 100%;
 max-height:45%;
 background-color:#fff;
+padding-bottom:20px;
+
 }
 `
 //card
@@ -696,13 +700,13 @@ align-items:center;
 @media screen and (max-width: 768px) { 
 position:absolute;
 flex-direction:column;
-top:43%;
+top:31%;
 width:340px;
-margin-bottom:20px;
 }
 `
 
-export const CardTableBelow = styled.div`
+
+export const TableHistory = styled.div`
 box-shadow: 0 2px 4px rgba(0,0,0,0.5);
 background-color:#fff;
 width:49%;
@@ -712,9 +716,56 @@ align-items:center;
 @media screen and (max-width: 768px) { 
 position:absolute;
 flex-direction:column;
-top:68%;
+top:36%;
 width:340px;
-margin-bottom:20px;
+}
+`
+
+export const TableExhausting = styled.div`
+box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+background-color:#fff;
+width:49%;
+border-radius:10px;
+height:auto;
+align-items:center;
+@media screen and (max-width: 768px) { 
+position:absolute;
+flex-direction:column;
+margin-top:18%;
+top:75%;
+width:340px;
+
+}
+`
+export const TableClientDown = styled.div`
+box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+background-color:#fff;
+width:49%;
+border-radius:10px;
+height:auto;
+align-items:center;
+@media screen and (max-width: 768px) { 
+position:absolute;
+flex-direction:column;
+top:43%;
+width:340px;
+}
+`
+
+export const TableClientHigh = styled.div`
+box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+background-color:#fff;
+width:49%;
+border-radius:10px;
+height:auto;
+align-items:center;
+@media screen and (max-width: 768px) { 
+position:absolute;
+flex-direction:column;
+margin-top:1%;
+top:71%;
+width:340px;
+
 }
 `
 
@@ -1048,7 +1099,7 @@ margin:5px 0;
 }
 span {
   background-color:#C5CFFF;
-  padding:8px 11px 5px 11px;
+  padding:7px 10px 4px 10px;
   border-radius:50%;
 }
 }
@@ -1130,7 +1181,14 @@ export const HeaderPrediction = styled.div`
     width: 20px;
     height:20px;
   }
+  @media screen and (max-width: 768px) {
+position:absolute;
+top:10%;
+height:20%;
+  }
 `;
+
+
 export const Info = styled.div`
   position: absolute;
   top: 27%;
@@ -1151,6 +1209,10 @@ export const Info = styled.div`
     margin-right: 5px;
     width: 16px;
     vertical-align: middle;
+  }
+  @media screen and (max-width: 768px) {
+top:50%;
+left:0;
   }
 `;
 
@@ -1294,7 +1356,7 @@ export const CardDetails = styled.div`
     margin:10px 0 0 0;
     @media screen and (max-width: 768px) {
       position:absolute;
-      top:20%;
+      top:22%;
       height:18%;
       justify-content:space-around;
     }
@@ -1546,4 +1608,3 @@ export const InfoFilter = styled.div`
 `;
 
 
-//responsive

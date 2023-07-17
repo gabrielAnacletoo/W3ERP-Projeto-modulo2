@@ -1,4 +1,4 @@
-import { ContainerTables, CardTables, MenuDetails, Table, HeaderDetails } from '@/assets/styles/Style'
+import * as S from '@/assets/styles/Style'
 import { useState, useEffect } from 'react'
 import Exhausting from '@/config/Pedrictions/Exhausting'
 import History from '@/config/Pedrictions/History'
@@ -74,16 +74,16 @@ const PredictionTable = () => {
 
   return (
     <>
-     <ContainerTables>
-        <CardTables>
-        <MenuDetails>
-            <HeaderDetails>
+     <S.ContainerTables>
+        <S.TableHistory>
+        <S.MenuDetails>
+            <S.HeaderDetails>
               <span className='Clock'><img src={Clock} /></span>
               <span className="SoraFonts">Histórico</span>
-            </HeaderDetails>
-          </MenuDetails>
+            </S.HeaderDetails>
+          </S.MenuDetails>
 
-          <Table>
+          <S.Table>
             <table className="PoopinsFont">
               <thead>
                 <tr>
@@ -106,18 +106,18 @@ const PredictionTable = () => {
                     ))}
               </tbody>
             </table>
-          </Table>
-        </CardTables>
+          </S.Table>
+        </S.TableHistory>
 
-        <CardTables>
-        <MenuDetails>
-            <HeaderDetails>
+        <S.TableExhausting>
+        <S.MenuDetails>
+            <S.HeaderDetails>
             <span className='Exhausting'><img src={ExhaustIcon} /></span>
               <span className="SoraFonts EXfont">Produtos Esgotando</span>
-            </HeaderDetails>
-          </MenuDetails>
+            </S.HeaderDetails>
+          </S.MenuDetails>
 
-          <Table>
+          <S.Table>
             <table className="PoopinsFont">
               <thead>
                 <tr>
@@ -143,11 +143,11 @@ const PredictionTable = () => {
                     ))}
               </tbody>
             </table>
-          </Table>
-        </CardTables>
+          </S.Table>
+        </S.TableExhausting>
 
        
-      </ContainerTables>
+      </S.ContainerTables>
     </>
   )
 }

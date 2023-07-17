@@ -1,5 +1,5 @@
 import { DetailsHigh, DetailsLow } from '@/config/Details/DetailsTable'
-import {TableChildren,CardTableBelow,ContainerTables,CardTables,MenuDetails,Table,HeaderDetails} from '@/assets/styles/Style'
+import * as S from '@/assets/styles/Style'
 import { useState, useEffect } from 'react'
 import ArrowDown from '@/assets/images/trending-down.png'
 import ArrowUp from '@/assets/images/trending-up.png'
@@ -53,16 +53,16 @@ const Detailstables = () => {
 
   return (
     <>
-     <ContainerTables>
-        <CardTables>
-          <MenuDetails>
-            <HeaderDetails>
+     <S.ContainerTables>
+        <S.TableClientDown >
+          <S.MenuDetails>
+            <S.HeaderDetails>
               <span className='Down'><img src={ArrowDown} /></span>
               <span className="SoraFonts">Clientes em Baixa</span>
-            </HeaderDetails>
-          </MenuDetails>
+            </S.HeaderDetails>
+          </S.MenuDetails>
 
-          <TableChildren>
+          <S.TableChildren>
             <table className="PoopinsFont">
               <thead>
                 <tr>
@@ -89,18 +89,18 @@ const Detailstables = () => {
                 )}
               </tbody>
             </table>
-          </TableChildren>
-        </CardTables>
+          </S.TableChildren>
+        </S.TableClientDown>
 
-        <CardTableBelow>
-          <MenuDetails>
-          <HeaderDetails>
+        <S.TableClientHigh>
+          <S.MenuDetails>
+          <S.HeaderDetails>
               <span className='UP'><img src={ArrowUp} /></span>
               <span className="SoraFonts">Clientes em alta</span>
-            </HeaderDetails>
-          </MenuDetails>
+            </S.HeaderDetails>
+          </S.MenuDetails>
 
-          <TableChildren>
+          <S.TableChildren>
             <table className="PoopinsFont">
               <thead>
                 <tr>
@@ -127,9 +127,9 @@ const Detailstables = () => {
                 )}
               </tbody>
             </table>
-          </TableChildren>
-        </CardTableBelow>
-      </ContainerTables>
+          </S.TableChildren>
+        </S.TableClientHigh>
+      </S.ContainerTables>
     </>
   )
 }
