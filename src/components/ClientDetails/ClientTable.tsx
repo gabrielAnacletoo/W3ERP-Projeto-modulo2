@@ -86,7 +86,7 @@ const ClientTable = () => {
                   ))
                 ) : (
                   <tr>
-                    <td colSpan={4}>Nenhum cliente encontrado</td>
+                    <td colSpan={4}>Nenhum produto encontrado</td>
                   </tr>
                 )}
               </tbody>
@@ -124,7 +124,7 @@ const ClientTable = () => {
                   ))
                 ) : (
                   <tr>
-                    <td colSpan={4}>Nenhum cliente encontrado</td>
+                    <td colSpan={4}>Nenhum produto encontrado</td>
                   </tr>
                 )}
               </tbody>
