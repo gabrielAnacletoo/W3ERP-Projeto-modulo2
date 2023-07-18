@@ -59,7 +59,7 @@ const CardTable = () => {
     setClientClassification(value)
   }
 
-  const handleDetails = (id: any) => {
+  const handleDetails = (id: string) => {
     localStorage.setItem('ID_PRODUCT', id)
     localStorage.setItem('ID_CLIENT', id)
   }
@@ -116,7 +116,7 @@ const CardTable = () => {
                       <Link
                         to="/details"
                         onClick={() =>
-                          produtos.id && handleDetails(produtos.id)
+                          produtos.id && handleDetails(produtos.id.toString())
                         }
                       >
                         {' '}
@@ -178,7 +178,7 @@ const CardTable = () => {
                     <td>
                       <Link
                         to="/clientedetails"
-                        onClick={() => cliente.id && handleDetails(cliente.id)}
+                        onClick={() => cliente.id && handleDetails(cliente.id.toString())}
                       >
                         {' '}
                         <img src={ArrowRight} />
