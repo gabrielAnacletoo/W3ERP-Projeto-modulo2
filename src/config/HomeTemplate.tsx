@@ -24,7 +24,7 @@ const HomeTemplate = ({ children }: Props) => {
 
   return (
     <>
-      {token || StorageToken ? (
+      {StorageToken ? (
         <ContainerHome>
           <NavSide />
           <ContentGroup>
