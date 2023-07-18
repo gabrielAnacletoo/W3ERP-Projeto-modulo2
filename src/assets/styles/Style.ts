@@ -958,7 +958,12 @@ table {
   align-items:center;
   width:99%;
   border-collapse: collapse;
-
+}
+th {
+  font-size:11px;
+}
+td {
+  font-size:10px;
 }
 }
 `
