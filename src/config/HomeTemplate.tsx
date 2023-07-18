@@ -21,10 +21,11 @@ const HomeTemplate = ({ children }: Props) => {
 
   const { token } = contextToken;
   const StorageToken = localStorage.getItem('AUTH_TOKEN');
-
+  console.log('token provider:' , token)
+  console.log('token local:' , StorageToken)
   return (
     <>
-      {StorageToken ? (
+      {token || StorageToken ? (
         <ContainerHome>
           <NavSide />
           <ContentGroup>
