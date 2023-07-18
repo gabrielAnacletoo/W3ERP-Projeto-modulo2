@@ -6,7 +6,7 @@ export const Delete = async (token: string,id:number): Promise<PredictionsType> 
     
 
     try {
-     const response = await axios.delete(apiUrl, {
+     const response = await axios.post(apiUrl, {
         headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`,
