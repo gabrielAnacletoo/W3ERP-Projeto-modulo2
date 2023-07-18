@@ -25,7 +25,7 @@ const HomeTemplate = ({ children }: Props) => {
   console.log('token local:' , StorageToken)
   return (
     <>
-      {token || StorageToken ? (
+    
         <ContainerHome>
           <NavSide />
           <ContentGroup>
@@ -33,9 +33,7 @@ const HomeTemplate = ({ children }: Props) => {
             {children}
           </ContentGroup>
         </ContainerHome>
-      ) : (
-        <TokenNotFound/>
-      )}
+    
     </>
   )
 }
