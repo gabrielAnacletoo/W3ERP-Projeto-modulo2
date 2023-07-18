@@ -24,17 +24,16 @@ const Login = () => {
     throw new Error('contextToken not found.')
   }
 
-const handlesave = (token: string) => {
-  contextToken.handleToken(token);
-}
-
+  const handlesave = (token: string) => {
+    contextToken.handleToken(token)
+  }
 
   useEffect(() => {
     const rememberedEmail = localStorage.getItem('REMEMBERED_EMAIL')
     const rememberedPassword = localStorage.getItem('REMEMBERED_PASSWORD')
 
     if (rememberedEmail && rememberedPassword) {
-      setLoginData((prevdata) => ({
+      setLoginData(prevdata => ({
         ...prevdata,
         email: rememberedEmail,
         senha: rememberedPassword
@@ -44,7 +43,7 @@ const handlesave = (token: string) => {
 
   const handleInput = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
-    setLoginData((prevdata) => ({
+    setLoginData(prevdata => ({
       ...prevdata,
       [name]: value
     }))
@@ -57,12 +56,12 @@ const handlesave = (token: string) => {
       const loginSuccessful = await LoginAPI(loginData)
       handlesave(loginSuccessful.token)
       localStorage.setItem('AUTH_TOKEN', loginSuccessful.token)
-        if (remember) {
-          localStorage.setItem('REMEMBERED_EMAIL', loginData.email)
-          localStorage.setItem('REMEMBERED_PASSWORD', loginData.senha)
-        }
-        navigate('/home')
-        return 
+      if (remember) {
+        localStorage.setItem('REMEMBERED_EMAIL', loginData.email)
+        localStorage.setItem('REMEMBERED_PASSWORD', loginData.senha)
+      }
+      navigate('/home')
+      return
     } catch (error) {
       throw new Error('Oops! Houve um problema ao carregar os dados.')
     }
@@ -75,7 +74,6 @@ const handlesave = (token: string) => {
   const handleRemember = (e: ChangeEvent<HTMLInputElement>) => {
     setRemember(e.target.checked)
   }
-
 
   return (
     <LoginForm>
@@ -119,7 +117,7 @@ const handlesave = (token: string) => {
 
           <div className="buttonsForm">
             <label htmlFor="remember"></label>
-            <div className='Remember'>
+            <div className="Remember">
               <input
                 type="checkbox"
                 checked={remember}

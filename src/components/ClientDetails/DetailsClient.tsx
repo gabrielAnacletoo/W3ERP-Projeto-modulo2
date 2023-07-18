@@ -14,20 +14,16 @@ import ClientTable from './ClientTable'
 import { useContext } from 'react'
 import TokenContext from '@/Context/TokenContext'
 
-
 const DetailsClientes = () => {
   const IDClient = localStorage.getItem('ID_CLIENT')
   const [detailsClient, setDetailsClient] = useState<Details>({} as Details)
   const navigate = useNavigate()
-  const contextToken = useContext(TokenContext);
-  
+  const contextToken = useContext(TokenContext)
+
   if (!contextToken) {
-    throw new Error('contextToken not found.');
+    throw new Error('contextToken not found.')
   }
-  const { token } = contextToken;
-
-
-
+  const { token } = contextToken
 
   useEffect(() => {
     const fetchDashData = async () => {
@@ -46,8 +42,6 @@ const DetailsClientes = () => {
   const handleBack = () => {
     navigate('/home')
   }
-
-
 
   return (
     <>
@@ -81,7 +75,9 @@ const DetailsClientes = () => {
                   <p>Últimos 30 dias</p>
                 </div>
                 <div>
-                  <span className="NumTotal">{detailsClient.ultimos30Dias}</span>{' '}
+                  <span className="NumTotal">
+                    {detailsClient.ultimos30Dias}
+                  </span>{' '}
                   <span className="PercentPositive">
                     {detailsClient.percentualUltimos30Dias}%
                   </span>{' '}
@@ -95,7 +91,9 @@ const DetailsClientes = () => {
                   <p>Últimos 60 dias </p>
                 </div>
                 <div>
-                  <span className="NumTotal">{detailsClient.ultimos60Dias}</span>
+                  <span className="NumTotal">
+                    {detailsClient.ultimos60Dias}
+                  </span>
                 </div>
               </div>
             </DivDetails>
@@ -106,7 +104,9 @@ const DetailsClientes = () => {
                   <p>Últimos 90 dias </p>
                 </div>
                 <div>
-                  <span className="NumTotal">{detailsClient.ultimos90Dias}</span>
+                  <span className="NumTotal">
+                    {detailsClient.ultimos90Dias}
+                  </span>
                 </div>
               </div>
             </DivDetails>
@@ -117,13 +117,15 @@ const DetailsClientes = () => {
                   <p>Últimos 120 dias </p>
                 </div>
                 <div>
-                  <span className="NumTotal">{detailsClient.ultimos120Dias}</span>
+                  <span className="NumTotal">
+                    {detailsClient.ultimos120Dias}
+                  </span>
                 </div>
               </div>
             </DivDetails>
           </CardDetails>
         </ContainerDetails>
-        <ClientTable/>
+        <ClientTable />
       </HomeTemplate>
     </>
   )

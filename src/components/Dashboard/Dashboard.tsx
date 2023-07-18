@@ -1,5 +1,6 @@
 import * as S from '@/assets/styles/Style'
-import { ChartComponent1,
+import {
+  ChartComponent1,
   ChartComponent2,
   ChartComponent3,
   ChartComponent4
@@ -14,19 +15,18 @@ import Downarrow from '@/assets/images/chevron down.png'
 const Dashboard = () => {
   const [dashData, setDashData] = useState<DashboardData>({} as DashboardData)
   const [ModalMonth, setModalMonth] = useState<boolean>(false)
-  const contextToken = useContext(TokenContext);
-  
+  const contextToken = useContext(TokenContext)
+
   if (!contextToken) {
-    throw new Error('contextToken not found.');
+    throw new Error('contextToken not found.')
   }
 
-  const {token} = contextToken;
+  const { token } = contextToken
 
   useEffect(() => {
     const fetchDashData = async () => {
       try {
         if (token !== null) {
-          
           const data = await DashAPI(token)
           setDashData(data)
         }
@@ -37,36 +37,42 @@ const Dashboard = () => {
     fetchDashData()
   }, [])
 
-  const isMobile = window.innerWidth <= 768; // Verifica se é um dispositivo móvel
+  const isMobile = window.innerWidth <= 768 // Verifica se é um dispositivo móvel
 
- 
   return (
     <>
       <S.ContainerDashBoard className="PoopinsFont">
-      <S.Filter>
-  <div>
-    <h2 className="PoopinsFont">Dashboard</h2>
-  </div>
-  <S.FilterMonth>
-    <img src={CalendarIcon} alt="Calendar Icon" /> <span>Mostrar:</span>
-    <div className='SelectMonth'>
-      Esse mês <img src={Downarrow} alt="Icon down" onClick={() => setModalMonth(!ModalMonth)} />
-    </div>
-    {ModalMonth && 
-      <S.MonthModal className="active">
-        <span className='SelectMonth'>120 dias</span>
-        <span className='SelectMonth'>90 dias</span>
-        <span className='SelectMonth'>60 dias</span>
-        <span className='SelectMonth'>30 dias</span>
-      </S.MonthModal>
-    }
-  </S.FilterMonth>
+        <S.Filter>
+          <div>
+            <h2 className="PoopinsFont">Dashboard</h2>
+          </div>
+          <S.FilterMonth>
+            <img src={CalendarIcon} alt="Calendar Icon" /> <span>Mostrar:</span>
+            <div className="SelectMonth">
+              Esse mês{' '}
+              <img
+                src={Downarrow}
+                alt="Icon down"
+                onClick={() => setModalMonth(!ModalMonth)}
+              />
+            </div>
+            {ModalMonth && (
+              <S.MonthModal className="active">
+                <span className="SelectMonth">120 dias</span>
+                <span className="SelectMonth">90 dias</span>
+                <span className="SelectMonth">60 dias</span>
+                <span className="SelectMonth">30 dias</span>
+              </S.MonthModal>
+            )}
+          </S.FilterMonth>
         </S.Filter>
         <S.DivCards>
           <S.DivInfo>
-          {!isMobile && (
+            {!isMobile && (
               <ChartComponent1
-                percentualTotalProdutosAlta={dashData.percentualTotalProdutosAlta}
+                percentualTotalProdutosAlta={
+                  dashData.percentualTotalProdutosAlta
+                }
                 percentualTotalProdutosBaixa={0}
                 percentualTotalClientesAlta={0}
                 percentualTotalClientesBaixa={0}
@@ -88,16 +94,16 @@ const Dashboard = () => {
           </S.DivInfo>
 
           <S.DivInfo>
-          {!isMobile && (
-            <ChartComponent2
-              percentualTotalProdutosBaixa={
-                dashData.percentualTotalProdutosBaixa
-              }
-              percentualTotalProdutosAlta={0}
-              percentualTotalClientesAlta={0}
-              percentualTotalClientesBaixa={0}
-            />
-          )}
+            {!isMobile && (
+              <ChartComponent2
+                percentualTotalProdutosBaixa={
+                  dashData.percentualTotalProdutosBaixa
+                }
+                percentualTotalProdutosAlta={0}
+                percentualTotalClientesAlta={0}
+                percentualTotalClientesBaixa={0}
+              />
+            )}
             <div>
               <div>
                 <p>Total produtos em baixa</p>
@@ -114,14 +120,16 @@ const Dashboard = () => {
           </S.DivInfo>
 
           <S.DivInfo>
-          {!isMobile && (
-            <ChartComponent3
-              percentualTotalClientesAlta={dashData.percentualTotalClientesAlta}
-              percentualTotalProdutosAlta={0}
-              percentualTotalProdutosBaixa={0}
-              percentualTotalClientesBaixa={0}
-            />
-          )}
+            {!isMobile && (
+              <ChartComponent3
+                percentualTotalClientesAlta={
+                  dashData.percentualTotalClientesAlta
+                }
+                percentualTotalProdutosAlta={0}
+                percentualTotalProdutosBaixa={0}
+                percentualTotalClientesBaixa={0}
+              />
+            )}
             <div>
               <div>
                 <p>Total clientes em alta </p>
@@ -138,16 +146,16 @@ const Dashboard = () => {
           </S.DivInfo>
 
           <S.DivInfo>
-          {!isMobile && (
-            <ChartComponent4
-              percentualTotalClientesBaixa={
-                dashData.percentualTotalClientesBaixa
-              }
-              percentualTotalProdutosAlta={0}
-              percentualTotalProdutosBaixa={0}
-              percentualTotalClientesAlta={0}
-            />
-          )}
+            {!isMobile && (
+              <ChartComponent4
+                percentualTotalClientesBaixa={
+                  dashData.percentualTotalClientesBaixa
+                }
+                percentualTotalProdutosAlta={0}
+                percentualTotalProdutosBaixa={0}
+                percentualTotalClientesAlta={0}
+              />
+            )}
             <div>
               <div>
                 <p>Total clientes em baixa </p>

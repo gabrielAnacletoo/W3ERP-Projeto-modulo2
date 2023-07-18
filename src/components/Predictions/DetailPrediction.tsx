@@ -12,9 +12,8 @@ import { useLocation } from 'react-router-dom'
 import Phone from '@/assets/images/phone-telephone.png'
 import Mail from '@/assets/images/mail.png'
 
-
 const DetailPrediction = () => {
-  const location = useLocation();
+  const location = useLocation()
   const navigate = useNavigate()
 
   //button back
@@ -22,7 +21,7 @@ const DetailPrediction = () => {
     navigate('/predicoes')
   }
 
-  const { nome, email, telefone } = location.state;
+  const { nome, email, telefone } = location.state
 
   return (
     <>
@@ -31,20 +30,26 @@ const DetailPrediction = () => {
           <TopDetails>
             <div>
               <span className="BtnBack" onClick={handleBack}>
-                <img src={BackArrow} className='imgBG'/>
+                <img src={BackArrow} className="imgBG" />
               </span>
               <span>Predição</span>
             </div>
           </TopDetails>
           <HeaderPrediction>
-          <h2 className='SoraFonts text-overlay'>{nome}</h2>
-          <Info>
-            <div><img src={Phone} alt="Phone Icon" />{telefone && telefone.length > 0 ? telefone : '-'}</div>
-            <div><img src={Mail} alt="Mail Icon" />{email && email.length ? email : '-'}</div>
+            <h2 className="SoraFonts text-overlay">{nome}</h2>
+            <Info>
+              <div>
+                <img src={Phone} alt="Phone Icon" />
+                {telefone && telefone.length > 0 ? telefone : '-'}
+              </div>
+              <div>
+                <img src={Mail} alt="Mail Icon" />
+                {email && email.length ? email : '-'}
+              </div>
             </Info>
           </HeaderPrediction>
         </ContainerDetails>
-       <PredictionTable/>
+        <PredictionTable />
       </HomeTemplate>
     </>
   )

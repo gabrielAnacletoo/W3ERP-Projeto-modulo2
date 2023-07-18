@@ -10,23 +10,19 @@ import TokenContext from '@/Context/TokenContext'
 import { format } from 'date-fns'
 import Delete from '@/config/Pedrictions/Delete'
 
-
-
 const PredictionTable = () => {
-  const PredictionClient = parseInt(localStorage.getItem('ID_PREDICTION')!);
-  const [historico, setHistorico] = useState<HistoryData>({} as HistoryData);
-  const [exhaustingData, setExhaustingData] = useState<PredictionsType>({} as PredictionsType);
-  const contextToken = useContext(TokenContext);
-  
+  const PredictionClient = parseInt(localStorage.getItem('ID_PREDICTION')!)
+  const [historico, setHistorico] = useState<HistoryData>({} as HistoryData)
+  const [exhaustingData, setExhaustingData] = useState<PredictionsType>(
+    {} as PredictionsType
+  )
+  const contextToken = useContext(TokenContext)
 
-  
   if (!contextToken) {
-    throw new Error('contextToken not found.');
+    throw new Error('contextToken not found.')
   }
-  const { token } = contextToken;
+  const { token } = contextToken
 
-
-  
   // History
   useEffect(() => {
     const fetchDashData = async () => {
@@ -42,19 +38,17 @@ const PredictionTable = () => {
     fetchDashData()
   }, [])
 
-  //delete history 
+  //delete history
   const handleDelete = async (productId: number) => {
     try {
       if (token !== null) {
-        const updatedHistorico = await Delete(token, productId);
-        setHistorico(updatedHistorico);
+        const updatedHistorico = await Delete(token, productId)
+        setHistorico(updatedHistorico)
       }
     } catch (error) {
-      throw new Error('Oops! Houve um problema ao excluir o item.');
+      throw new Error('Oops! Houve um problema ao excluir o item.')
     }
   }
-
-
 
   // Exhausting
   useEffect(() => {
@@ -71,14 +65,15 @@ const PredictionTable = () => {
     fetchDashData()
   }, [])
 
-
   return (
     <>
-     <S.ContainerTables>
+      <S.ContainerTables>
         <S.TableHistory>
-        <S.MenuDetails>
+          <S.MenuDetails>
             <S.HeaderDetails>
-              <span className='Clock'><img src={Clock} /></span>
+              <span className="Clock">
+                <img src={Clock} />
+              </span>
               <span className="SoraFonts">Histórico</span>
             </S.HeaderDetails>
           </S.MenuDetails>
@@ -95,24 +90,41 @@ const PredictionTable = () => {
                 </tr>
               </thead>
               <tbody>
-              {historico.content && historico.content.map((produto) => (
+                {historico.content &&
+                  historico.content.map(produto => (
                     <tr key={produto.id}>
-                        <td>{produto.id}</td>
-                        <td>{produto.nome.length > 25 ? produto.nome.substring(0, 25) + '...' : produto.nome}</td>
-                        <td>{format( new Date(produto.ultimaCompra), 'dd/MM/yyyy')}</td>
-                        <td>{produto.quantidade}</td>
-                        <td> <img src={Baixa} alt="Icon dar baixa" className='IconDelete' onClick={() => handleDelete(produto.id)}/> </td>
+                      <td>{produto.id}</td>
+                      <td>
+                        {produto.nome.length > 25
+                          ? produto.nome.substring(0, 25) + '...'
+                          : produto.nome}
+                      </td>
+                      <td>
+                        {format(new Date(produto.ultimaCompra), 'dd/MM/yyyy')}
+                      </td>
+                      <td>{produto.quantidade}</td>
+                      <td>
+                        {' '}
+                        <img
+                          src={Baixa}
+                          alt="Icon dar baixa"
+                          className="IconDelete"
+                          onClick={() => handleDelete(produto.id)}
+                        />{' '}
+                      </td>
                     </tr>
-                    ))}
+                  ))}
               </tbody>
             </table>
           </S.Table>
         </S.TableHistory>
 
         <S.TableExhausting>
-        <S.MenuDetails>
+          <S.MenuDetails>
             <S.HeaderDetails>
-            <span className='Exhausting'><img src={ExhaustIcon} /></span>
+              <span className="Exhausting">
+                <img src={ExhaustIcon} />
+              </span>
               <span className="SoraFonts EXfont">Produtos Esgotando</span>
             </S.HeaderDetails>
           </S.MenuDetails>
@@ -121,7 +133,7 @@ const PredictionTable = () => {
             <table className="PoopinsFont">
               <thead>
                 <tr>
-    <th className="RadiusLeft">ID</th>
+                  <th className="RadiusLeft">ID</th>
                   <th>Produto</th>
                   <th>Última Compra</th>
                   <th>Próxima Compra</th>
@@ -130,26 +142,41 @@ const PredictionTable = () => {
                 </tr>
               </thead>
               <tbody>
-              {exhaustingData.content && exhaustingData.content.map((produto) => (
-               
-                  <tr key={produto.id}>
-                  <td>{produto.id}</td>
-                  <td>{produto.nome.length > 15 ? produto.nome.substring(0, 15) + '...' : produto.nome}</td>
-                  <td>{produto.ultimaCompra && format(new Date(produto.ultimaCompra), 'dd/MM/yyyy')}</td>
-                  <td>{produto.proximaCompra && format(new Date(produto.proximaCompra), 'dd/MM/yyyy')}</td>
-                  <td>{produto.quantidade}</td>
-                  <td> <img src={Baixa} alt="Icon dar baixa" className='IconDelete'/> </td>
+                {exhaustingData.content &&
+                  exhaustingData.content.map(produto => (
+                    <tr key={produto.id}>
+                      <td>{produto.id}</td>
+                      <td>
+                        {produto.nome.length > 15
+                          ? produto.nome.substring(0, 15) + '...'
+                          : produto.nome}
+                      </td>
+                      <td>
+                        {produto.ultimaCompra &&
+                          format(new Date(produto.ultimaCompra), 'dd/MM/yyyy')}
+                      </td>
+                      <td>
+                        {produto.proximaCompra &&
+                          format(new Date(produto.proximaCompra), 'dd/MM/yyyy')}
+                      </td>
+                      <td>{produto.quantidade}</td>
+                      <td>
+                        {' '}
+                        <img
+                          src={Baixa}
+                          alt="Icon dar baixa"
+                          className="IconDelete"
+                        />{' '}
+                      </td>
                     </tr>
-                    ))}
+                  ))}
               </tbody>
             </table>
           </S.Table>
         </S.TableExhausting>
-
-       
       </S.ContainerTables>
     </>
   )
 }
 
-export default PredictionTable;
+export default PredictionTable

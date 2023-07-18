@@ -7,25 +7,21 @@ import {
   TopDetails
 } from '@/assets/styles/Style'
 import { useEffect, useState } from 'react'
-import  DetailsAPI from '@/config/Details/Details'
+import DetailsAPI from '@/config/Details/Details'
 import BackArrow from '@/assets/images/left-small.png'
 import Detailstables from './Detailstables'
 import { useContext } from 'react'
 import TokenContext from '@/Context/TokenContext'
 
-
-
 const Details = () => {
   const IdProduct = localStorage.getItem('ID_PRODUCT')
   const [details, setDetails] = useState<Details>({} as Details)
-  const contextToken = useContext(TokenContext);
-  
+  const contextToken = useContext(TokenContext)
+
   if (!contextToken) {
-    throw new Error('contextToken not found.');
+    throw new Error('contextToken not found.')
   }
-  const { token } = contextToken;
-
-
+  const { token } = contextToken
 
   useEffect(() => {
     const fetchDashData = async () => {
@@ -42,7 +38,7 @@ const Details = () => {
   }, [])
 
   const handleBack = () => {
-    history.back();
+    history.back()
   }
 
   return (
@@ -118,7 +114,7 @@ const Details = () => {
             </DivDetails>
           </CardDetails>
         </ContainerDetails>
-        <Detailstables/>
+        <Detailstables />
       </HomeTemplate>
     </>
   )

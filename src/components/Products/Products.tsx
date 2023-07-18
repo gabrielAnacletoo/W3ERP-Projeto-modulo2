@@ -1,38 +1,37 @@
-import HomeTemplate from '@/config/HomeTemplate';
-import * as S from '@/assets/styles/Style';
-import Search from '@/assets/images/search.png';
-import { useState, useEffect, ChangeEvent } from 'react';
-import ProductsAPI from '@/config/Products/Product';
-import { useNavigate } from 'react-router-dom';
-import { useContext } from 'react';
-import TokenContext from '@/Context/TokenContext';
-import FitlerIcon from '@/assets/images/filter.png';
-import useDebounce from '../../config/Products/useDebounce';
-import DebounceAPI from '@/config/Products/Debounce';
+import HomeTemplate from '@/config/HomeTemplate'
+import * as S from '@/assets/styles/Style'
+import Search from '@/assets/images/search.png'
+import { useState, useEffect, ChangeEvent } from 'react'
+import ProductsAPI from '@/config/Products/Product'
+import { useNavigate } from 'react-router-dom'
+import { useContext } from 'react'
+import TokenContext from '@/Context/TokenContext'
+import FitlerIcon from '@/assets/images/filter.png'
+import useDebounce from '../../config/Products/useDebounce'
+import DebounceAPI from '@/config/Products/Debounce'
 
 const Products = () => {
-  const [products, setProducts] = useState<ReturnProduct>({} as ReturnProduct);
-  const [searchValue, setSearchValue] = useState<string>('');
-  const [totalEmAlta, setTotalEmAlta] = useState<number>(0);
-  const [totalEmBaixa, setTotalEmBaixa] = useState<number>(0);
+  const [products, setProducts] = useState<ReturnProduct>({} as ReturnProduct)
+  const [searchValue, setSearchValue] = useState<string>('')
+  const [totalEmAlta, setTotalEmAlta] = useState<number>(0)
+  const [totalEmBaixa, setTotalEmBaixa] = useState<number>(0)
 
-  const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(0);
-  const [filterOption, setFilterOption] = useState<boolean>(false);
-  const [classificacao, setClassificacao] = useState<string>('');
+  const [currentPage, setCurrentPage] = useState(1)
+  const [totalPages, setTotalPages] = useState(0)
+  const [filterOption, setFilterOption] = useState<boolean>(false)
+  const [classificacao, setClassificacao] = useState<string>('')
   const [pagesShow, setPagesShow] = useState<number[]>([1])
   const debouncedValue = useDebounce(searchValue, 1000)
-  const navigate = useNavigate();
-  const contextToken = useContext(TokenContext);
+  const navigate = useNavigate()
+  const contextToken = useContext(TokenContext)
 
   if (!contextToken) {
-    throw new Error('contextToken not found.');
+    throw new Error('contextToken not found.')
   }
-  const { token } = contextToken;
+  const { token } = contextToken
 
- 
   // Pagination
-  const buttonsOnScreen = 4;
+  const buttonsOnScreen = 4
   useEffect(() => {
     if (totalPages) {
       setPagesShow(
@@ -48,85 +47,83 @@ const Products = () => {
     }
   }, [currentPage, totalPages])
 
-
   const fetchProducts = async () => {
     try {
       if (token !== null) {
-        const data = await ProductsAPI(token, currentPage - 1, classificacao);
-        setProducts(data);
-        setTotalPages(data.totalPages);
-        
+        const data = await ProductsAPI(token, currentPage - 1, classificacao)
+        setProducts(data)
+        setTotalPages(data.totalPages)
       }
     } catch (error) {
-      throw new Error('Oops! Houve um problema ao carregar os dados.');
+      throw new Error('Oops! Houve um problema ao carregar os dados.')
     }
   }
 
   useEffect(() => {
-    fetchProducts();
-  }, [currentPage, token]);
+    fetchProducts()
+  }, [currentPage, token])
 
   //button apply filter
   const handleApplyFilter = async () => {
     setCurrentPage(1)
     setFilterOption(false)
     try {
-      await fetchProducts();
+      await fetchProducts()
     } catch (error) {
-      throw new Error('Oops! Houve um problema ao carregar os dados.');
+      throw new Error('Oops! Houve um problema ao carregar os dados.')
     }
   }
 
-
-  //props id 
+  //props id
   const handleProductClick = (productId: number) => {
-    localStorage.setItem('ID_PRODUCT', productId.toString());
-    navigate('/details');
+    localStorage.setItem('ID_PRODUCT', productId.toString())
+    navigate('/details')
   }
 
   // Filter modal
   const handleShowFilters = () => {
-    setFilterOption(!filterOption);
+    setFilterOption(!filterOption)
   }
 
   //If the same checkbox is clicked again, it is unchecked
   const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const checkboxValue = event.target.value;
+    const checkboxValue = event.target.value
     if (checkboxValue === classificacao) {
-      setClassificacao('');
+      setClassificacao('')
     } else {
-      setClassificacao(checkboxValue);
+      setClassificacao(checkboxValue)
     }
   }
 
-  //search 
+  //search
   const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
-    const {value} = e.target
+    const { value } = e.target
     setSearchValue(value)
   }
 
-
-  //debounce 
+  //debounce
   useEffect(() => {
     const fetchDebounce = async () => {
       try {
-        const data = await DebounceAPI(token, debouncedValue);
-        setProducts(data);
+        const data = await DebounceAPI(token, debouncedValue)
+        setProducts(data)
       } catch (error) {
-        throw new Error('A pesquisa falhou.');
+        throw new Error('A pesquisa falhou.')
       }
-    };
-  
-    fetchDebounce();
+    }
+
+    fetchDebounce()
   }, [token, debouncedValue])
-  
-
-
 
   return (
     <HomeTemplate>
       <S.CardSearch>
-        <input type="text" placeholder="Pesquise uma palavra-chave" value={searchValue} onChange={handleSearch} />
+        <input
+          type="text"
+          placeholder="Pesquise uma palavra-chave"
+          value={searchValue}
+          onChange={handleSearch}
+        />
         <button className="BtnSearch">
           <img src={Search} alt="Search Button" />
         </button>
@@ -198,10 +195,12 @@ const Products = () => {
           </thead>
           <tbody>
             {products.content &&
-              products.content.map((product) => (
+              products.content.map(product => (
                 <tr key={product.id}>
                   <td>{product.id}</td>
-                  <td onClick={() => handleProductClick(product.id)}>{product.nome}</td>
+                  <td onClick={() => handleProductClick(product.id)}>
+                    {product.nome}
+                  </td>
                   <td>
                     <span
                       className={
@@ -210,7 +209,8 @@ const Products = () => {
                           : product.classificacao === 'EM_BAIXA'
                           ? 'RedResult'
                           : ''
-                      }>
+                      }
+                    >
                       {product.classificacao}
                     </span>
                   </td>
@@ -221,27 +221,30 @@ const Products = () => {
         </table>
       </S.ContainerProducts>
       <S.BtnPagination>
-      <button
-        onClick={() => currentPage - 1 > 0 && setCurrentPage(currentPage - 1)}
-      >
-        {"<"}
-      </button>
-      {pagesShow.map((pageButton) => (
-        <button onClick={() => setCurrentPage(pageButton)}
-        className={currentPage === pageButton ? 'SelectedPage' : ''}
-        > {pageButton}</button>
-      ))}
-      <button
-        onClick={() =>
-          currentPage + 1 < totalPages && setCurrentPage(currentPage + 1)
-          
-        }
-      >
-        {">"}
-      </button>
+        <button
+          onClick={() => currentPage - 1 > 0 && setCurrentPage(currentPage - 1)}
+        >
+          {'<'}
+        </button>
+        {pagesShow.map(pageButton => (
+          <button
+            onClick={() => setCurrentPage(pageButton)}
+            className={currentPage === pageButton ? 'SelectedPage' : ''}
+          >
+            {' '}
+            {pageButton}
+          </button>
+        ))}
+        <button
+          onClick={() =>
+            currentPage + 1 < totalPages && setCurrentPage(currentPage + 1)
+          }
+        >
+          {'>'}
+        </button>
       </S.BtnPagination>
     </HomeTemplate>
-  );
-};
+  )
+}
 
-export default Products;
+export default Products

@@ -6,58 +6,57 @@ import ArrowUp from '@/assets/images/trending-up.png'
 import { useContext } from 'react'
 import TokenContext from '@/Context/TokenContext'
 
-
 const Detailstables = () => {
-    const IdProduct = localStorage.getItem('ID_PRODUCT')
-    const [detailsTables, setDetailsTables] = useState<TableDetails[]>([]);
-    const [clientsTable, setClientsTables] = useState<TableDetails[]>([]);
+  const IdProduct = localStorage.getItem('ID_PRODUCT')
+  const [detailsTables, setDetailsTables] = useState<TableDetails[]>([])
+  const [clientsTable, setClientsTables] = useState<TableDetails[]>([])
 
+  const contextToken = useContext(TokenContext)
 
-    const contextToken = useContext(TokenContext);
-  
-    if (!contextToken) {
-      throw new Error('contextToken not found.');
+  if (!contextToken) {
+    throw new Error('contextToken not found.')
+  }
+  const { token } = contextToken
+
+  //products
+  useEffect(() => {
+    const fetchDashData = async () => {
+      try {
+        if (token !== null && IdProduct !== null) {
+          const data = await DetailsLow(token, IdProduct)
+          setDetailsTables(data)
+        }
+      } catch (error) {
+        throw new Error('Oops! Houve um problema ao carregar os dados.')
+      }
     }
-    const { token } = contextToken;
-  
-  
-    //products
-    useEffect(() => {
-        const fetchDashData = async () => {
-          try {
-            if (token !== null && IdProduct !== null) {
-              const data = await DetailsLow(token, IdProduct);
-              setDetailsTables(data)
-            }
-          } catch (error) {
-            throw new Error('Oops! Houve um problema ao carregar os dados.')
-          }
-        }
-        fetchDashData();
-      }, [])
+    fetchDashData()
+  }, [])
 
-      //clients
-      useEffect(() => {
-        const fetchDashData = async () => {
-          try {
-            if (token !== null && IdProduct !== null) {
-              const data = await DetailsHigh(token, IdProduct)
-              setClientsTables(data)
-            }
-          } catch (error) {
-            throw new Error('Oops! Houve um problema ao carregar os dados.')
-          }
+  //clients
+  useEffect(() => {
+    const fetchDashData = async () => {
+      try {
+        if (token !== null && IdProduct !== null) {
+          const data = await DetailsHigh(token, IdProduct)
+          setClientsTables(data)
         }
-        fetchDashData();
-      }, [])
+      } catch (error) {
+        throw new Error('Oops! Houve um problema ao carregar os dados.')
+      }
+    }
+    fetchDashData()
+  }, [])
 
   return (
     <>
-     <S.ContainerTables>
-        <S.TableClientDown >
+      <S.ContainerTables>
+        <S.TableClientDown>
           <S.MenuDetails>
             <S.HeaderDetails>
-              <span className='Down'><img src={ArrowDown} /></span>
+              <span className="Down">
+                <img src={ArrowDown} />
+              </span>
               <span className="SoraFonts">Clientes em Baixa</span>
             </S.HeaderDetails>
           </S.MenuDetails>
@@ -77,7 +76,11 @@ const Detailstables = () => {
                   detailsTables.map((clientes: TableDetails) => (
                     <tr key={clientes.id}>
                       <td>{clientes.id}</td>
-                      <td>{clientes.nome.length > 35 ? clientes.nome.substring(0, 35) + '...' : clientes.nome}</td>
+                      <td>
+                        {clientes.nome.length > 35
+                          ? clientes.nome.substring(0, 35) + '...'
+                          : clientes.nome}
+                      </td>
                       <td>{clientes.percentual.toFixed(0)}%</td>
                       <td>{clientes.quantidade}</td>
                     </tr>
@@ -94,8 +97,10 @@ const Detailstables = () => {
 
         <S.TableClientHigh>
           <S.MenuDetails>
-          <S.HeaderDetails>
-              <span className='UP'><img src={ArrowUp} /></span>
+            <S.HeaderDetails>
+              <span className="UP">
+                <img src={ArrowUp} />
+              </span>
               <span className="SoraFonts">Clientes em alta</span>
             </S.HeaderDetails>
           </S.MenuDetails>
@@ -115,7 +120,11 @@ const Detailstables = () => {
                   clientsTable.map((clientes: TableDetails) => (
                     <tr key={clientes.id}>
                       <td>{clientes.id}</td>
-                      <td>{clientes.nome.length > 35 ? clientes.nome.substring(0, 35) + '...' : clientes.nome}</td>
+                      <td>
+                        {clientes.nome.length > 35
+                          ? clientes.nome.substring(0, 35) + '...'
+                          : clientes.nome}
+                      </td>
                       <td>{clientes.percentual.toFixed(0)}%</td>
                       <td>{clientes.quantidade}</td>
                     </tr>
@@ -134,4 +143,4 @@ const Detailstables = () => {
   )
 }
 
-export default Detailstables;
+export default Detailstables

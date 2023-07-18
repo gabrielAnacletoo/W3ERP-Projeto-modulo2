@@ -1,4 +1,4 @@
-import { ProductsHigh,ProductsLow } from '@/config/Details/DetailsTable'
+import { ProductsHigh, ProductsLow } from '@/config/Details/DetailsTable'
 import * as S from '@/assets/styles/Style'
 import { useState, useEffect } from 'react'
 import ArrowDown from '@/assets/images/trending-down.png'
@@ -6,60 +6,57 @@ import ArrowUp from '@/assets/images/trending-up.png'
 import { useContext } from 'react'
 import TokenContext from '@/Context/TokenContext'
 
-
 const ClientTable = () => {
-    const IDClient = localStorage.getItem('ID_CLIENT')
-    const [HighTable, setHighTable] = useState<TableDetails[]>([])
-    const [Lowtable, setLowtable] = useState<TableDetails[]>([])
+  const IDClient = localStorage.getItem('ID_CLIENT')
+  const [HighTable, setHighTable] = useState<TableDetails[]>([])
+  const [Lowtable, setLowtable] = useState<TableDetails[]>([])
 
-    const contextToken = useContext(TokenContext);
-  
-    if (!contextToken) {
-      throw new Error('contextToken not found.');
+  const contextToken = useContext(TokenContext)
+
+  if (!contextToken) {
+    throw new Error('contextToken not found.')
+  }
+  const { token } = contextToken
+
+  //products high
+  useEffect(() => {
+    const fetchDashData = async () => {
+      try {
+        if (token !== null && IDClient !== null) {
+          const data = await ProductsHigh(token, IDClient)
+          setHighTable(data)
+        }
+      } catch (error) {
+        throw new Error('Oops! Houve um problema ao carregar os dados.')
+      }
     }
-    const { token } = contextToken;
-  
-  
+    fetchDashData()
+  }, [])
 
-    //products high
-    useEffect(() => {
-        const fetchDashData = async () => {
-          try {
-            if (token !== null && IDClient !== null) {
-              const data = await ProductsHigh(token, IDClient);
-              setHighTable(data)
-            }
-          } catch (error) {
-            throw new Error('Oops! Houve um problema ao carregar os dados.')
-          }
+  //products low
+  useEffect(() => {
+    const fetchDashData = async () => {
+      try {
+        if (token !== null && IDClient !== null) {
+          const data = await ProductsLow(token, IDClient)
+          setLowtable(data)
         }
-        fetchDashData();
-      }, [])
-
-
-      //products low  
-      useEffect(() => {
-        const fetchDashData = async () => {
-          try {
-            if (token !== null && IDClient !== null) {
-              const data = await ProductsLow(token, IDClient);
-              setLowtable(data)
-            }
-          } catch (error) {
-            throw new Error('Oops! Houve um problema ao carregar os dados.')
-          }
-        }
-        fetchDashData();
-      }, [])
-      
+      } catch (error) {
+        throw new Error('Oops! Houve um problema ao carregar os dados.')
+      }
+    }
+    fetchDashData()
+  }, [])
 
   return (
     <>
-     <S.ContainerTables>
+      <S.ContainerTables>
         <S.TableClientDown>
           <S.MenuDetails>
             <S.HeaderDetails>
-              <span className='Down'><img src={ArrowDown} /></span>
+              <span className="Down">
+                <img src={ArrowDown} />
+              </span>
               <span className="SoraFonts">Produtos em Baixa</span>
             </S.HeaderDetails>
           </S.MenuDetails>
@@ -79,7 +76,11 @@ const ClientTable = () => {
                   Lowtable.map((produtos: TableDetails) => (
                     <tr key={produtos.id}>
                       <td>{produtos.id}</td>
-                      <td>{produtos.nome.length > 35 ? produtos.nome.substring(0, 35) + '...' : produtos.nome}</td>
+                      <td>
+                        {produtos.nome.length > 35
+                          ? produtos.nome.substring(0, 35) + '...'
+                          : produtos.nome}
+                      </td>
                       <td>{produtos.percentual.toFixed(0)}%</td>
                       <td>{produtos.quantidade}</td>
                     </tr>
@@ -96,8 +97,10 @@ const ClientTable = () => {
 
         <S.TableClientHigh>
           <S.MenuDetails>
-          <S.HeaderDetails>
-              <span className='UP'><img src={ArrowUp} /></span>
+            <S.HeaderDetails>
+              <span className="UP">
+                <img src={ArrowUp} />
+              </span>
               <span className="SoraFonts">Produtos em alta</span>
             </S.HeaderDetails>
           </S.MenuDetails>
@@ -117,7 +120,11 @@ const ClientTable = () => {
                   HighTable.map((produtos: TableDetails) => (
                     <tr key={produtos.id}>
                       <td>{produtos.id}</td>
-                      <td>{produtos.nome.length > 35 ? produtos.nome.substring(0, 35) + '...' : produtos.nome}</td>
+                      <td>
+                        {produtos.nome.length > 35
+                          ? produtos.nome.substring(0, 35) + '...'
+                          : produtos.nome}
+                      </td>
                       <td>{produtos.percentual.toFixed(0)}%</td>
                       <td>{produtos.quantidade}</td>
                     </tr>
@@ -136,4 +143,4 @@ const ClientTable = () => {
   )
 }
 
-export default ClientTable;
+export default ClientTable
