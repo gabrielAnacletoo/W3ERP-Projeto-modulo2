@@ -114,6 +114,13 @@ input:valid~label {
   top: -27px;
   color: #00dd22;
 }
+.Remember {
+  display:flex;
+  align-items:center;
+  > input {
+    margin-right:5px;
+  }
+}
 @media screen and (max-width: 768px) {
   display: flex;
   flex-direction: column;

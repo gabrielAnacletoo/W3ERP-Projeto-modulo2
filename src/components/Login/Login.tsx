@@ -119,7 +119,7 @@ const handlesave = (token: string) => {
 
           <div className="buttonsForm">
             <label htmlFor="remember"></label>
-            <div>
+            <div className='Remember'>
               <input
                 type="checkbox"
                 checked={remember}
