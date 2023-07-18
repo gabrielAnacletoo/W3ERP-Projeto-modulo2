@@ -37,7 +37,7 @@ const Dashboard = () => {
     fetchDashData()
   }, [])
 
-  const isMobile = window.innerWidth <= 768 // Verifica se é um dispositivo móvel
+  const isMobile = window.innerWidth <= 768
 
   return (
     <>
