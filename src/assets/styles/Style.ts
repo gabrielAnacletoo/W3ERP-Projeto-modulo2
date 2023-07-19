@@ -133,15 +133,15 @@ input:valid~label {
     margin-left:1%;
 }
 }
-@media screen and (min-width: 1920px) and (min-height: 1080px) {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  overflow: hidden;
+@media  screen and (min-width: 1920px) {
   height: 100vh;
-  width: 100%;
-  }
+  width: 1920px;
+img {
+  margin-left:61%;
+  width:1200px;
+  height:100%;
+}
+}
 `
 export const ImageLogin = styled.div`
 width:23%;
@@ -282,6 +282,20 @@ export const Contact = styled.div`
 @media screen and (max-width: 768px) { 
   display: none;
 }
+@media  screen and (min-width: 1920px) {
+  margin:50% 0 0 0;
+  p {
+  margin-top:40px;
+  text-align:center;
+  font-size:12px;
+ }
+  .Hands {
+  position:absolute;
+  top:28%;
+  width: 9.5%;
+}
+}
+
 `
 //Button Contact 
 export const BtnContact = styled.button`
@@ -506,6 +520,13 @@ width:100vw;
 background-color:#001C98;
 height:26%;
 }
+@media screen and (min-width: 1920px) {
+border-radius:20px;
+background-color:#001C98;
+margin-right:1%;
+height:25%;
+margin-bottom:5%;
+}
 `
 export const Filter = styled.div`
 display:flex;
@@ -592,6 +613,13 @@ export const DivCards = styled.div`
     margin:0 0 0 0;
     height:150px;
     text-align:center;
+}
+@media screen and (min-width: 1920px){
+  display:flex;
+    flex-direction:row;
+    justify-content:space-around;
+    align-items:center;
+    margin:3% 0 0 0;
 }
 `
 //Info cards Recharts
@@ -680,6 +708,9 @@ export const DivInfo = styled.div`
     color: #fff;
   }
 }
+@media screen and (min-width: 1920px){
+  
+}
 `
 
 
@@ -720,40 +751,11 @@ flex-direction:column;
 top:31%;
 width:340px;
 }
+
 `
 
 
-export const TableHistory = styled.div`
-box-shadow: 0 2px 4px rgba(0,0,0,0.5);
-background-color:#fff;
-width:49%;
-border-radius:10px;
-height:auto;
-align-items:center;
-@media screen and (max-width: 768px) { 
-position:absolute;
-flex-direction:column;
-top:37%;
-width:340px;
-}
-`
 
-export const TableExhausting = styled.div`
-box-shadow: 0 2px 4px rgba(0,0,0,0.5);
-background-color:#fff;
-width:49%;
-border-radius:10px;
-height:auto;
-align-items:center;
-@media screen and (max-width: 768px) { 
-position:absolute;
-flex-direction:column;
-margin-top:18%;
-top:75%;
-width:340px;
-
-}
-`
 export const TableClientDown = styled.div`
 box-shadow: 0 2px 4px rgba(0,0,0,0.5);
 background-color:#fff;
@@ -983,6 +985,21 @@ td {
   font-size:10px;
 }
 }
+@media  screen and (min-width: 1920px) {
+display:flex;
+justify-content:center;
+padding:0 0 2% 0; 
+overflow: auto;
+height:600px;
+table {
+  align-items:center;
+  width:95%;
+  border-collapse: collapse;
+}
+td {
+  max-height: 10px;
+}
+}
 `
 export const TableChildren = styled.div`
 display:flex;
@@ -1095,8 +1112,15 @@ export const GridCards = styled.div`
     top:22%;
     width: 350px;
     margin:15px 0 0 15px;
-
   }
+  @media screen and (min-width: 1920px){
+  display: flex;
+  flex-wrap: wrap;
+  margin:3% 0;
+  width: 98%;
+  overflow:auto;
+  height:85%;
+}
 `;
 
 
@@ -1111,6 +1135,13 @@ export const CardClient = styled.div`
   margin: 0 10px 20px 0;
   @media screen and (max-width: 768px) {
     flex-basis: calc(50% - 10px);
+  }
+  @media screen and (min-width: 1920px){
+  flex-basis: calc(25% - 10px);
+  height: 45%;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  margin: 0 10px 20px 0;
   }
 `;
 
@@ -1144,6 +1175,12 @@ span {
   background-color:#C5CFFF;
   padding:4px 8px 3px 8px;
   border-radius:50%;
+}
+}
+@media screen and (min-width:1920px){
+  font-size:25px;
+  img {
+  width:25px;
 }
 }
 `
@@ -1193,6 +1230,15 @@ th {
 td {
   padding: 1.5px 0 0 0;
   font-size:10px;
+}
+@media screen and (min-width:1920px){
+
+  th{
+    font-size:17px;
+  }
+  td {
+    font-size:14px;
+  }
 }
 `
 
@@ -1257,6 +1303,9 @@ export const Info = styled.div`
 top:49%;
 left:0;
 font-size:10px;
+  }
+  @media screen and (min-width:1920px) {
+    top:17%;
   }
 `;
 
