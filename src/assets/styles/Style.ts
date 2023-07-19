@@ -133,6 +133,15 @@ input:valid~label {
     margin-left:1%;
 }
 }
+@media screen and (min-width: 1920px) and (min-height: 1080px) {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+  height: 100vh;
+  width: 100%;
+  }
 `
 export const ImageLogin = styled.div`
 width:23%;
@@ -143,9 +152,10 @@ width:23%;
 }
 @media screen and (max-width: 768px) { 
 >img {
-  width:0px;
+display:none;
 }
 }
+
 `
 
 

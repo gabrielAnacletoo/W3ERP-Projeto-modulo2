@@ -68,7 +68,7 @@ const PredictionTable = () => {
   return (
     <>
       <S.ContainerTables>
-        <S.TableHistory>
+        <S.CardTables>
           <S.MenuDetails>
             <S.HeaderDetails>
               <span className="Clock">
@@ -117,9 +117,9 @@ const PredictionTable = () => {
               </tbody>
             </table>
           </S.Table>
-        </S.TableHistory>
+        </S.CardTables>
 
-        <S.TableExhausting>
+        <S.CardTables>
           <S.MenuDetails>
             <S.HeaderDetails>
               <span className="Exhausting">
@@ -173,7 +173,7 @@ const PredictionTable = () => {
               </tbody>
             </table>
           </S.Table>
-        </S.TableExhausting>
+        </S.CardTables>
       </S.ContainerTables>
     </>
   )

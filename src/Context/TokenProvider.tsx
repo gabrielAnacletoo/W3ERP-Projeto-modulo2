@@ -19,7 +19,7 @@ const TokenProvider = ({ children }: Props) => {
   }, [])
   const handleToken = (token: string) => {
     setToken(token)
-                }
+   }
 
   return (
     <TokenContext.Provider value={{token, handleToken}}>

@@ -51,7 +51,7 @@ const ClientTable = () => {
   return (
     <>
       <S.ContainerTables>
-        <S.TableClientDown>
+        <S.CardTables>
           <S.MenuDetails>
             <S.HeaderDetails>
               <span className="Down">
@@ -93,9 +93,9 @@ const ClientTable = () => {
               </tbody>
             </table>
           </S.TableChildren>
-        </S.TableClientDown>
+        </S.CardTables>
 
-        <S.TableClientHigh>
+        <S.CardTables>
           <S.MenuDetails>
             <S.HeaderDetails>
               <span className="UP">
@@ -137,7 +137,7 @@ const ClientTable = () => {
               </tbody>
             </table>
           </S.TableChildren>
-        </S.TableClientHigh>
+        </S.CardTables>
       </S.ContainerTables>
     </>
   )

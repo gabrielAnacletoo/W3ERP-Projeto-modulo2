@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { toast } from 'react-toastify';
 
 const DashAPI = async (token: string): Promise<DashboardData> => {
   const apiUrl = 'https://api.predict.app.br/app/dashboard/resumo';

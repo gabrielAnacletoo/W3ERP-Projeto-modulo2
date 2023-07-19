@@ -2,8 +2,7 @@ import { ContainerHome } from '@/assets/styles/Style'
 import NavSide from '@/components/Navside/NavSide'
 import Profile from '@/components/Profile/Profile'
 import { ContentGroup } from '@/assets/styles/Style'
-import { ReactNode } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { ReactNode, useEffect } from 'react';
 import { useContext } from 'react';
 import TokenContext from '@/Context/TokenContext';
 import TokenNotFound from '@/components/Error/TokenNotFound';
@@ -21,8 +20,13 @@ const HomeTemplate = ({ children }: Props) => {
 
   const { token } = contextToken;
   const StorageToken = localStorage.getItem('AUTH_TOKEN');
-  console.log('token provider:' , token)
-  console.log('token storage:' , StorageToken)
+
+
+  useEffect(() => {
+    
+  }, []) 
+
+
   return (
     <>
       {token || StorageToken ? (

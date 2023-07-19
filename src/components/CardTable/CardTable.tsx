@@ -105,7 +105,7 @@ const CardTable = () => {
                 </tr>
               </thead>
               <tbody>
-                {productList.map((produtos: TablesProducts) => (
+                {productList.map((produtos) => (
                   <tr key={produtos.id}>
                     <td>{produtos.id}</td>
                     <td>
@@ -130,7 +130,7 @@ const CardTable = () => {
           </S.Table>
         </S.CardTables>
 
-        <S.TableEClientsHome>
+        <S.CardTables>
           <S.MenuTables>
             <div className="ContainerProducts">
               <img src={Clients} className="Clients" />
@@ -189,7 +189,7 @@ const CardTable = () => {
               </tbody>
             </table>
           </S.Table>
-        </S.TableEClientsHome>
+        </S.CardTables>
       </S.ContainerTables>
     </>
   )

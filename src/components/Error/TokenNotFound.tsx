@@ -16,7 +16,7 @@ const TokenNotFound = () => {
                   <h3 className="h2">Look like you're lost</h3>
                   <p>You need a token to access the page!</p>
                   <Link to="/" className="link_404">
-                    Go back to Home
+                    Go back to Login
                   </Link>
                 </div>
               </div>
