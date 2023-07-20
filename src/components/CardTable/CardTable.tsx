@@ -17,7 +17,7 @@ const CardTable = () => {
   const [clientClassification, setClientClassification] = useState<'EM_ALTA' | 'EM_BAIXA'>('EM_BAIXA')
   localStorage.setItem('PRODUCT_CLASSIFICATION', productClassification)
   localStorage.setItem('CLIENT_CLASSIFICATION', clientClassification) 
-
+  console.log('renderizou cardtable')
   
   const contextToken = useContext(TokenContext);
   if (!contextToken) {
@@ -50,7 +50,7 @@ const CardTable = () => {
     }
 
     fetchData();
-    
+
   }, [productClassification, clientClassification])
 
 
