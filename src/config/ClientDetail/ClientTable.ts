@@ -2,7 +2,13 @@ import axios from 'axios';
 
 export const DetailsTables = async (token: string, id: string): Promise<TableDetails> => {
   const apiUrl = `https://api.predict.app.br/app/cliente/${id}/produtos?classificacao=EM_ALTA`;
-
+  if (!token) {
+    const storageToken = localStorage.getItem('AUTH_TOKEN')
+    if (!storageToken){
+      throw new Error('Token not found.');
+    }
+    token = storageToken;
+  }
   try {
     const response = await axios.get(apiUrl, {
       headers: {
@@ -20,7 +26,14 @@ export const DetailsTables = async (token: string, id: string): Promise<TableDet
 
 export const DetailsClients = async (token: string,id:string): Promise<Details> => {
   const apiUrl = `https://api.predict.app.br/app/cliente/${id}/resumo`;
-
+  if (!token) {
+    
+    const storageToken = localStorage.getItem('AUTH_TOKEN')
+    if (!storageToken){
+      throw new Error('Token not found.');
+    }
+    token = storageToken;
+  }
   try {
    const response = await axios.get(apiUrl, {
       headers: {

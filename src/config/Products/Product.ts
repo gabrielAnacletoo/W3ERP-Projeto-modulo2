@@ -1,6 +1,14 @@
 import axios from 'axios';
 
 const ProductsAPI = async (token: string, page:number, classification:  string): Promise<ReturnProduct> => {
+  if (!token) {
+    
+    const storageToken = localStorage.getItem('AUTH_TOKEN')
+    if (!storageToken){
+      throw new Error('Token not found.');
+    }
+    token = storageToken;
+  }
   let apiUrl = `https://api.predict.app.br/app/produto?page=${page}&size=10`
   if (classification === 'TODOS' || classification === undefined) {
     apiUrl = `https://api.predict.app.br/app/produto?page=${page}&size=10`

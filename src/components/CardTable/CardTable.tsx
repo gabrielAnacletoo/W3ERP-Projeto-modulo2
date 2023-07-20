@@ -15,8 +15,11 @@ const CardTable = () => {
   const [clientList, setClientList] = useState<TablesProducts[]>([])
   const [productClassification, setProductClassification] = useState<'EM_ALTA' | 'EM_BAIXA'>('EM_ALTA')
   const [clientClassification, setClientClassification] = useState<'EM_ALTA' | 'EM_BAIXA'>('EM_BAIXA')
-  const contextToken = useContext(TokenContext);
+  localStorage.setItem('PRODUCT_CLASSIFICATION', productClassification)
+  localStorage.setItem('CLIENT_CLASSIFICATION', clientClassification) 
+
   
+  const contextToken = useContext(TokenContext);
   if (!contextToken) {
     throw new Error('contextToken not found.');
   }
@@ -47,6 +50,7 @@ const CardTable = () => {
     }
 
     fetchData();
+
   }, [productClassification, clientClassification])
 
 

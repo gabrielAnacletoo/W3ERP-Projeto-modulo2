@@ -26,6 +26,12 @@ type LoginResponse = {
     token: string
     type: string
 }
+type UserData = {
+  email: string 
+  id: number
+  nome: string 
+  papel: string
+}
 
 //return User data
 type UserData = {

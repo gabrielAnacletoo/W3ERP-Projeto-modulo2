@@ -20,7 +20,7 @@ const Profile = () => {
     throw new Error('contextToken not found.')
   }
 
-  const { token, handleToken } = contextToken
+  const { token, handleToken } = contextToken;
 
   const handleBtn = () => {
     setShowBtn(!showBtn)
@@ -31,11 +31,12 @@ const Profile = () => {
     localStorage.removeItem('AUTH_TOKEN')
     navigate('/')
   }
-
+ 
   useEffect(() => {
     const fetchUserData = async () => {
-      if (token !== null) {
+      if (token !== null ) {
         const data = await getUserData(token)
+      
         setUserData(data)
       }
     }
