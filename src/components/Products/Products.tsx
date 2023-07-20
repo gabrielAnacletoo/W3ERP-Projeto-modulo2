@@ -13,9 +13,6 @@ import DebounceAPI from '@/config/Products/Debounce'
 const Products = () => {
   const [products, setProducts] = useState<ReturnProduct>({} as ReturnProduct)
   const [searchValue, setSearchValue] = useState<string>('')
-  const [totalEmAlta, setTotalEmAlta] = useState<number>(0)
-  const [totalEmBaixa, setTotalEmBaixa] = useState<number>(0)
-
   const [currentPage, setCurrentPage] = useState(1)
   const [totalPages, setTotalPages] = useState(0)
   const [filterOption, setFilterOption] = useState<boolean>(false)
