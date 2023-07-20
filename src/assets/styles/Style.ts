@@ -205,6 +205,8 @@ ul > li {
     margin-top: 36px;
     display: flex;
     align-items: center; 
+  }
+  ul > li:hover {
     transform: scale(1.02);
   transition: transform 0.2s ease-in-out;
   }
@@ -925,6 +927,7 @@ justify-content:center;
 padding:0 0 2% 0; 
 overflow: auto;
 height:250px;
+
 table {
   align-items:center;
   width:95%;
@@ -993,6 +996,7 @@ justify-content:center;
 padding:0 0 2% 0; 
 overflow: auto;
 height:600px;
+min-height:100px;
 table {
   align-items:center;
   width:95%;
