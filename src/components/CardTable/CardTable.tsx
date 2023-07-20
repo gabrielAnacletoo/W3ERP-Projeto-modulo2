@@ -17,7 +17,7 @@ const CardTable = () => {
   const [clientClassification, setClientClassification] = useState<'EM_ALTA' | 'EM_BAIXA'>('EM_BAIXA')
   localStorage.setItem('PRODUCT_CLASSIFICATION', productClassification)
   localStorage.setItem('CLIENT_CLASSIFICATION', clientClassification) 
-  console.log('renderizou cardtable')
+ 
   
   const contextToken = useContext(TokenContext);
   if (!contextToken) {
@@ -31,26 +31,22 @@ const CardTable = () => {
   useEffect(() => {
     const fetchData = async () => {
         try {
-          if(token) {
             const productData = await ProductsTable(token, productClassification)
             setProductList(productData)
-          }
         } catch (error) {
           throw new Error('Oops! Houve um problema ao carregar os dados.')
         }
 
         try {
-          if(token) {
             const clientData = await ClientsTable(token, clientClassification)
             setClientList(clientData)
-          }
         } catch (error) {
           throw new Error('Oops! Houve um problema ao carregar os dados.')
         }
     }
 
     fetchData();
-
+    console.log('efect cardtable')
   }, [productClassification, clientClassification])
 
 
