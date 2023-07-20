@@ -46,7 +46,7 @@ const CardTable = () => {
     }
 
     fetchData();
-    console.log('efect cardtable')
+  
   }, [productClassification, clientClassification])
 
 
