@@ -205,6 +205,8 @@ ul > li {
     margin-top: 36px;
     display: flex;
     align-items: center; 
+    transform: scale(1.02);
+  transition: transform 0.2s ease-in-out;
   }
  .DashImg {
     margin-right:10px;

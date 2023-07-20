@@ -50,7 +50,7 @@ const CardTable = () => {
     }
 
     fetchData();
-
+    
   }, [productClassification, clientClassification])
 
 

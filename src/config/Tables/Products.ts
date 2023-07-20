@@ -9,6 +9,7 @@ const ProductsTable = async (token: string,classification: string): Promise<Tabl
       }
       classification = storageClassification
     }
+    console.log('AAAA')
     let apiUrl = `https://api.predict.app.br/app/dashboard/produtos?classificacao=${classification}`;
     if (!token) {
       const storageToken = localStorage.getItem('AUTH_TOKEN')
