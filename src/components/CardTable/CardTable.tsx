@@ -9,47 +9,45 @@ import { Link } from 'react-router-dom'
 import { useContext } from 'react'
 import TokenContext from '@/Context/TokenContext'
 
-
 const CardTable = () => {
   const [productList, setProductList] = useState<TablesProducts[]>([])
   const [clientList, setClientList] = useState<TablesProducts[]>([])
-  const [productClassification, setProductClassification] = useState<'EM_ALTA' | 'EM_BAIXA'>('EM_ALTA')
-  const [clientClassification, setClientClassification] = useState<'EM_ALTA' | 'EM_BAIXA'>('EM_BAIXA')
+  const [productClassification, setProductClassification] = useState<
+    'EM_ALTA' | 'EM_BAIXA'
+  >('EM_ALTA')
+  const [clientClassification, setClientClassification] = useState<
+    'EM_ALTA' | 'EM_BAIXA'
+  >('EM_BAIXA')
   localStorage.setItem('PRODUCT_CLASSIFICATION', productClassification)
-  localStorage.setItem('CLIENT_CLASSIFICATION', clientClassification) 
- 
-  
-  const contextToken = useContext(TokenContext);
+  localStorage.setItem('CLIENT_CLASSIFICATION', clientClassification)
+
+  //context
+  const contextToken = useContext(TokenContext)
   if (!contextToken) {
-    throw new Error('contextToken not found.');
+    throw new Error('contextToken not found.')
   }
-  const { token } = contextToken;
+  const { token } = contextToken
 
-
- 
   // Fetch data for products and clients
   useEffect(() => {
     const fetchData = async () => {
-        try {
-            const productData = await ProductsTable(token, productClassification)
-            setProductList(productData)
-        } catch (error) {
-          throw new Error('Oops! Houve um problema ao carregar os dados.')
-        }
+      try {
+        const productData = await ProductsTable(token, productClassification)
+        setProductList(productData)
+      } catch (error) {
+        throw new Error('Oops! Houve um problema ao carregar os dados.')
+      }
 
-        try {
-            const clientData = await ClientsTable(token, clientClassification)
-            setClientList(clientData)
-        } catch (error) {
-          throw new Error('Oops! Houve um problema ao carregar os dados.')
-        }
+      try {
+        const clientData = await ClientsTable(token, clientClassification)
+        setClientList(clientData)
+      } catch (error) {
+        throw new Error('Oops! Houve um problema ao carregar os dados.')
+      }
     }
 
-    fetchData();
-  
+    fetchData()
   }, [productClassification, clientClassification])
-
-
 
   const handleProductClassification = (value: 'EM_ALTA' | 'EM_BAIXA') => {
     setProductClassification(value)
@@ -78,8 +76,7 @@ const CardTable = () => {
                 className={
                   productClassification === 'EM_ALTA' ? 'BtnGreen' : 'BtnGray'
                 }
-                onClick={() => handleProductClassification('EM_ALTA')}
-              >
+                onClick={() => handleProductClassification('EM_ALTA')} >
                 Em alta
               </button>
 
@@ -87,8 +84,7 @@ const CardTable = () => {
                 className={
                   productClassification === 'EM_BAIXA' ? 'BtnRed' : 'BtnGray'
                 }
-                onClick={() => handleProductClassification('EM_BAIXA')}
-              >
+                onClick={() => handleProductClassification('EM_BAIXA')} >
                 Em baixa
               </button>
             </div>
@@ -105,11 +101,13 @@ const CardTable = () => {
                 </tr>
               </thead>
               <tbody>
-                {productList.map((produtos) => (
+                {productList.map(produtos => (
                   <tr key={produtos.id}>
                     <td>{produtos.id}</td>
                     <td>
-                      {produtos.nome.length > 25 ? produtos.nome.substring(0, 25)+ '...' : produtos.nome}
+                      {produtos.nome.length > 25
+                        ? produtos.nome.substring(0, 25) + '...'
+                        : produtos.nome}
                     </td>
                     <td>{produtos.percentual}%</td>
                     <td>
@@ -172,13 +170,17 @@ const CardTable = () => {
                   <tr key={cliente.id}>
                     <td>{cliente.id}</td>
                     <td>
-                      {cliente.nome.length > 25 ? cliente.nome.substring(0, 25) + '...' : cliente.nome}
+                      {cliente.nome.length > 25
+                        ? cliente.nome.substring(0, 25) + '...'
+                        : cliente.nome}
                     </td>
                     <td>{cliente.percentual}%</td>
                     <td>
                       <Link
                         to="/clientedetails"
-                        onClick={() => cliente.id && handleDetails(cliente.id.toString())}
+                        onClick={() =>
+                          cliente.id && handleDetails(cliente.id.toString())
+                        }
                       >
                         {' '}
                         <img src={ArrowRight} />

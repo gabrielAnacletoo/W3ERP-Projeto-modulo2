@@ -40,7 +40,7 @@ const DetailsClientes = () => {
   }, [])
 
   const handleBack = () => {
-    navigate('/home')
+    history.back();
   }
 
   return (

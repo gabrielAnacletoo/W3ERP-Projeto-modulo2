@@ -45,6 +45,7 @@ const Profile = () => {
 
   const handleConfirm = () => {
     setConfirmLogOut(!confirmLogout)
+    setShowBtn(false);
   }
 
   const isMobile = window.innerWidth <= 768

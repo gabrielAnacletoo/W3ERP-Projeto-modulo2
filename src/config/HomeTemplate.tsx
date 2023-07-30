@@ -21,12 +21,6 @@ const HomeTemplate = ({ children }: Props) => {
   const { token } = contextToken;
   const StorageToken = localStorage.getItem('AUTH_TOKEN');
 
-
-  useEffect(() => {
-    
-  }, []) 
-
-
   return (
     <>
       {token || StorageToken ? (

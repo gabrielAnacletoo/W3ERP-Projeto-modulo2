@@ -1,4 +1,4 @@
-import { PieChart,ResponsiveContainer, Pie, Cell, Label } from 'recharts';
+import { PieChart, Pie, Cell, Label } from 'recharts';
 
 
 export const ChartComponent1 = ({ percentualTotalProdutosAlta }: Props) => {

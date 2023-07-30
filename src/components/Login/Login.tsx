@@ -23,7 +23,7 @@ const Login = () => {
   if (!contextToken) {
     throw new Error('contextToken not found.')
   }
-
+//if token true, save.
   const handlesave = (token: string) => {
     contextToken.handleToken(token)
   }
@@ -48,10 +48,9 @@ const Login = () => {
       [name]: value
     }))
   }
-
+//login
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-
     try {
       const loginSuccessful = await LoginAPI(loginData)
       handlesave(loginSuccessful.token)
@@ -66,11 +65,11 @@ const Login = () => {
       throw new Error('Oops! Houve um problema ao carregar os dados.')
     }
   }
-
+//show password
   const handleToggle = () => {
     setShowPassword(!showPassWord)
   }
-
+//remember data
   const handleRemember = (e: ChangeEvent<HTMLInputElement>) => {
     setRemember(e.target.checked)
   }
@@ -109,8 +108,7 @@ const Login = () => {
             <button
               className="password-toggle"
               onClick={handleToggle}
-              type="button"
-            >
+              type="button">
               {showPassWord ? <VisibilityOffIcon /> : <VisibilityIcon />}
             </button>
           </div>
